@@ -92,13 +92,15 @@ switch ($acao)
 
   $data_inauguracao = data2bd(validaVarPost('data_inauguracao'));
   $chave_cielo = validaVarPost('chave_cielo');
+  $ativa  = validaVarPost('ativa');
+
 
   $con = conectabd();
 
   if ($codigo <= 0)
   {
 
-    $SqlEdicao = sprintf("INSERT INTO $tabela (cod_empresas, nome, telefone_1, telefone_2, telefone_3, telefone_4, endereco, numero, complemento, bairro, cidade, estado, cep, lat, lon, emails_diretoria, num_afiliacao_cartao, num_gateway_pagamento,chave_cielo, impressao_automatica, razao_social, nome_fantasia, cnpj, inscricao_estadual, data_inauguracao, debug_pedidos, timezone, situacao, dados_extra, merchant_id,ifood_ligado,token_loja,nota_ativa,email_nota_fiscal) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", $cod_empresas, $nome, $telefone_1, $telefone_2, $telefone_3, $telefone_4, $endereco, $numero, $complemento, $bairro, $cidade, $estado, $cep, $latitude, $longitude, $emails_diretoria, $num_afiliacao_cartao, $num_gateway_pagamento,$chave_cielo, $impressao_automatica, $razao_social, $nome_fantasia, $cnpj, $inscricao_estadual, $data_inauguracao, $debug_pedidos, $timezone, $situacao,$dados_extra,$merchant_id,$ifood_ligado,$token_loja,$nota_ativa,$email_nota_fiscal);
+    $SqlEdicao = sprintf("INSERT INTO $tabela (cod_empresas, nome, telefone_1, telefone_2, telefone_3, telefone_4, endereco, numero, complemento, bairro, cidade, estado, cep, lat, lon, emails_diretoria, num_afiliacao_cartao, num_gateway_pagamento,chave_cielo, impressao_automatica, razao_social, nome_fantasia, cnpj, inscricao_estadual, data_inauguracao, debug_pedidos, timezone, situacao, dados_extra, merchant_id,ifood_ligado,token_loja,nota_ativa,email_nota_fiscal,ativa) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", $cod_empresas, $nome, $telefone_1, $telefone_2, $telefone_3, $telefone_4, $endereco, $numero, $complemento, $bairro, $cidade, $estado, $cep, $latitude, $longitude, $emails_diretoria, $num_afiliacao_cartao, $num_gateway_pagamento,$chave_cielo, $impressao_automatica, $razao_social, $nome_fantasia, $cnpj, $inscricao_estadual, $data_inauguracao, $debug_pedidos, $timezone, $situacao,$dados_extra,$merchant_id,$ifood_ligado,$token_loja,$nota_ativa,$email_nota_fiscal,$ativa);
     $res_pizzarias = mysql_query($SqlEdicao);
     $cod_pizzarias = mysql_insert_id();
             //echo "<Br>1: ".$SqlEdicao;
@@ -260,7 +262,7 @@ switch ($acao)
       else
       {
         
-        $SqlEdicao = sprintf("UPDATE $tabela SET cod_empresas = '%s', nome = '%s', telefone_1 = '%s', telefone_2 = '%s', telefone_3 = '%s', telefone_4 = '%s', endereco = '%s', numero = '%s', complemento = '%s', bairro = '%s', cidade = '%s', estado = '%s', cep = '%s', lat = '%s', lon = '%s', emails_diretoria = '%s', impressao_automatica = '%s', num_afiliacao_cartao = '%s', num_gateway_pagamento = '%s',chave_cielo = '%s', razao_social = '%s', nome_fantasia = '%s', cnpj = '%s', inscricao_estadual = '%s', data_inauguracao = '%s', debug_pedidos = '%s' , timezone = '%s', situacao = '%s',dados_extra='%s',merchant_id='%s',ifood_ligado='%s',token_loja='%s',nota_ativa='%s',email_nota_fiscal='%s' WHERE $chave_primaria = $codigo", $cod_empresas, $nome, $telefone_1, $telefone_2, $telefone_3, $telefone_4, $endereco, $numero, $complemento, $bairro, $cidade, $estado, $cep, $latitude, $longitude, $emails_diretoria, $impressao_automatica, $num_afiliacao_cartao, $num_gateway_pagamento,$chave_cielo, $razao_social, $nome_fantasia, $cnpj, $inscricao_estadual, $data_inauguracao,$debug_pedidos, $timezone, $situacao,$dados_extra,$merchant_id,$ifood_ligado,$token_loja,$nota_ativa,$email_nota_fiscal);
+        $SqlEdicao = sprintf("UPDATE $tabela SET cod_empresas = '%s', nome = '%s', telefone_1 = '%s', telefone_2 = '%s', telefone_3 = '%s', telefone_4 = '%s', endereco = '%s', numero = '%s', complemento = '%s', bairro = '%s', cidade = '%s', estado = '%s', cep = '%s', lat = '%s', lon = '%s', emails_diretoria = '%s', impressao_automatica = '%s', num_afiliacao_cartao = '%s', num_gateway_pagamento = '%s',chave_cielo = '%s', razao_social = '%s', nome_fantasia = '%s', cnpj = '%s', inscricao_estadual = '%s', data_inauguracao = '%s', debug_pedidos = '%s' , timezone = '%s', situacao = '%s',dados_extra='%s',merchant_id='%s',ifood_ligado='%s',token_loja='%s',nota_ativa='%s',email_nota_fiscal='%s',ativa='%s' WHERE $chave_primaria = $codigo", $cod_empresas, $nome, $telefone_1, $telefone_2, $telefone_3, $telefone_4, $endereco, $numero, $complemento, $bairro, $cidade, $estado, $cep, $latitude, $longitude, $emails_diretoria, $impressao_automatica, $num_afiliacao_cartao, $num_gateway_pagamento,$chave_cielo, $razao_social, $nome_fantasia, $cnpj, $inscricao_estadual, $data_inauguracao,$debug_pedidos, $timezone, $situacao,$dados_extra,$merchant_id,$ifood_ligado,$token_loja,$nota_ativa,$email_nota_fiscal,$ativa);
         
 
 
@@ -1178,6 +1180,34 @@ if (is_file(UPLOAD_DIR . '/pizzarias/' . $objBusca->foto_pequena))
 <tr>
   <td class="tdbl tdbr">
     <input type="text" name="email_nota_fiscal" id="email_nota_fiscal" value="<? echo texto2bd($objBusca->email_nota_fiscal); ?>">
+  </td>
+</tr>
+
+
+<tr>
+  <td class="legenda tdbl tdbr"><br /><br /><label>Loja Ativa</label></td>
+</tr>
+<tr>
+  <td class="sep tdbl tdbr">
+    <hr noshade="noshade" color="#1C4B93">
+  </td>
+</tr>
+<tr>
+  <td class="legenda tdbl tdbr"><label for="ativa">Loja Ativa?</label></td>
+</tr>
+<tr>
+  <td class="tdbl tdbr">
+    <select name="ativa" id="ativa">
+      <?php if(texto2bd($objBusca->ativa) == 1){ ?>
+        <option name="1" selected>Sim</option>
+        <option name="2">Não</option>
+      <?php }else{
+        ?>
+        <option name="1">Sim</option>
+        <option name="2" selected>Não</option>
+        <?php
+      } ?>
+    </select>
   </td>
 </tr>
 
