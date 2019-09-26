@@ -1,0 +1,54 @@
+.menuTabInterno {
+	margin: 30px 0pt 20px 0pt;
+}
+
+.menuTabInterno ul {
+  background: transparent url(../img/principal/fundo-tab.gif) repeat-x scroll left bottom;
+  list-style: none;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.menuTabInterno ul li {
+  display: inline;
+}
+
+.menuTabInterno ul li a {
+  background: #1A4773 url(../img/principal/fundo-tab-menu.gif) repeat-x scroll left top;
+  color: #fff !important;
+  font-weight: bold !important;
+  text-decoration: none;
+  padding: 5px 15px;
+}
+
+.menuTabInterno ul li a:hover {
+  background: #1A4773 url(../img/principal/fundo-tab-menu-hover.gif) repeat-x scroll left top;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menuTabInterno ul li a:focus {
+  outline-style: none !important;	
+}
+
+.menuTabInterno ul li.ativo a {
+  background: #F8F8F8 url(../img/principal/fundo-tab-menu-ativo.gif) repeat-x scroll left top !important;
+  color: #333 !important;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding: 10px 15px 5px 15px;
+}
+
+.painelTabInterno {
+  display: none;
+  /*position: relative;*/
+  /*overflow: auto;*/	
+}
+
+.painelTabInterno.ativo {
+  display: block;
+}

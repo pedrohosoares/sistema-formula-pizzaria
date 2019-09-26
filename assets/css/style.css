@@ -1,0 +1,733 @@
+body {
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif; }
+
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+a.warning {
+  color: #ed2426; }
+
+::-webkit-input-placeholder {
+  color: #231f20; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #231f20; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #231f20; }
+
+:-ms-input-placeholder {
+  color: #231f20; }
+
+.container {
+  width: 1170px;
+  margin: 0 auto; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.btn {
+  border-radius: 4px;
+  padding: 10px 25px;
+  font-size: 16pt;
+  font-weight: 600;
+  background-color: #efefef;
+  border: none;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in; }
+
+.btn-small {
+  padding: 5px 15px;
+  font-size: 10pt; }
+
+.btn-primary {
+  background-color: #ffcc08;
+  color: #231f20; }
+  .btn-primary:hover {
+    background-color: #231f20;
+    color: #ffcc08;
+    text-decoration: none; }
+
+.btn-secondary {
+  background-color: #231f20;
+  color: #ffcc08; }
+  .btn-secondary:hover {
+    background-color: #ffcc08;
+    color: #231f20;
+    text-decoration: none; }
+
+.btn-success {
+  background-color: #39b54a;
+  color: #fff; }
+  .btn-success:hover {
+    background-color: #fff;
+    color: #39b54a;
+    text-decoration: none; }
+
+header.topo {
+  background-image: url(../imgs/bg_topo.jpg);
+  background-repeat: repeat;
+  height: 155px; }
+  header.topo .logo {
+    padding-top: 20px; }
+  header.topo nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    header.topo nav ul li {
+      display: inline-block;
+      padding: 55px 0 0 0;
+      height: calc( 155px - 55px );
+      margin: 0; }
+      header.topo nav ul li a {
+        text-transform: uppercase;
+        color: #231f20;
+        text-align: center; }
+        header.topo nav ul li a b {
+          font-size: 15pt;
+          font-weight: 700;
+          width: 100%;
+          float: left; }
+        header.topo nav ul li a span {
+          font-size: 10pt;
+          font-weight: 600;
+          width: 100%;
+          float: left; }
+    header.topo nav ul li.active, header.topo nav ul li:hover {
+      background-color: #ffcc08; }
+
+.superbanner {
+  height: 315px;
+  padding: 265px 0 0 0;
+  background-image: url(../imgs/banner_temp.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  text-align: center; }
+  .superbanner h1 {
+    font-size: 25pt;
+    font-weight: 600;
+    color: #fff;
+    padding: 0;
+    margin: 0 0 20px 0; }
+
+.content {
+  padding: 30px 0; }
+  .content .banners_home a {
+    margin-right: 20px; }
+  .content .banners_home a:last-child {
+    margin: 0; }
+
+.interna {
+  background-image: url(../imgs/bg_interna.jpg);
+  background-repeat: repeat-x; }
+
+.interna .content {
+  padding-top: 250px; }
+  .interna .content .container {
+    background-color: #fff;
+    padding: 20px 25px;
+    width: calc( 1170px - 50px); }
+  .interna .content h1, .interna .content h2, .interna .content h3, .interna .content h4, .interna .content h5, .interna .content h6 {
+    color: #231f20;
+    text-align: center; }
+  .interna .content h1 {
+    font-weight: 600;
+    font-size: 20pt; }
+  .interna .content nav ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center; }
+    .interna .content nav ul li {
+      display: inline-block;
+      padding: 0 10px;
+      border-right: 1px solid #231f20; }
+      .interna .content nav ul li a {
+        color: #231f20;
+        font-weight: 600;
+        font-size: 10pt; }
+    .interna .content nav ul li:first-child {
+      padding-left: 0; }
+    .interna .content nav ul li:last-child {
+      padding-right: 0;
+      border-right: none; }
+  .interna .content .cardapio {
+    margin-top: 50px; }
+    .interna .content .cardapio .pizza {
+      display: inline-block;
+      width: 249px;
+      text-align: center;
+      margin: 0 0 50px 35px; }
+      .interna .content .cardapio .pizza a {
+        color: #231f20;
+        font-size: 12pt;
+        font-weight: 600; }
+        .interna .content .cardapio .pizza a span {
+          margin-top: 15px; }
+    .interna .content .cardapio .pizza:nth-child(4n+1) {
+      margin-left: 0; }
+  .interna .content .box_pedido {
+    display: inline-block;
+    margin-bottom: 50px; }
+  .interna .content .fechar_pedido .box_pizza {
+    padding-top: 160px;
+    min-height: calc( 435px - 160px); }
+    .interna .content .fechar_pedido .box_pizza .btn {
+      margin-right: 14px; }
+      .interna .content .fechar_pedido .box_pizza .btn:hover {
+        background-color: #231f20;
+        color: #ffcc08;
+        text-decoration: none; }
+    .interna .content .fechar_pedido .box_pizza .btn-1 {
+      background-color: #a7a6a6;
+      color: #ffcc08; }
+    .interna .content .fechar_pedido .box_pizza .btn-2 {
+      background-color: #7e7e7e;
+      color: #ffcc08; }
+    .interna .content .fechar_pedido .box_pizza .btn-3 {
+      background-color: #231f20;
+      color: #ffcc08; }
+  .interna .content .infos_pedido {
+    float: left;
+    margin-left: 30px;
+    background-color: #231f20;
+    border-radius: 12px;
+    width: 335px;
+    min-height: 450px;
+    position: relative; }
+    .interna .content .infos_pedido h1 {
+      color: #ffcc08; }
+    .interna .content .infos_pedido .linha {
+      display: inline-block;
+      width: 100%; }
+    .interna .content .infos_pedido .linha:last-child {
+      text-align: center; }
+    .interna .content .infos_pedido .linha.amarelo {
+      background-color: #ffcc08;
+      width: 104%;
+      left: -6px;
+      position: relative; }
+    .interna .content .infos_pedido .infos {
+      display: inline-block;
+      width: 100%;
+      padding: 5px 0; }
+      .interna .content .infos_pedido .infos a.warning {
+        font-size: 10pt;
+        float: right;
+        margin-right: 10px; }
+      .interna .content .infos_pedido .infos ul {
+        list-style: none; }
+        .interna .content .infos_pedido .infos ul li {
+          width: 100%;
+          line-height: 25px;
+          color: #fff; }
+      .interna .content .infos_pedido .infos p {
+        color: #fff;
+        padding: 15px;
+        line-height: 30px; }
+    .interna .content .infos_pedido .btn.btn-success {
+      margin: 18px 0 0 0;
+      display: inline-block; }
+  .interna .content .box_pizza {
+    background-color: #ffcc08;
+    border-radius: 12px;
+    padding: 15px 10px;
+    width: 735px;
+    min-height: 435px;
+    float: left; }
+    .interna .content .box_pizza label {
+      width: 48%;
+      display: inline-block;
+      margin-bottom: 30px; }
+      .interna .content .box_pizza label select {
+        -webkit-appearance: none;
+        border-radius: 8px;
+        border: 2px solid #231f20;
+        color: #231f20;
+        padding: 10px 40px 10px 10px;
+        font-size: 10pt;
+        width: 100%;
+        background: #fff url(../imgs/arrow_select.png) no-repeat right; }
+      .interna .content .box_pizza label span {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: 14pt; }
+    .interna .content .box_pizza label:nth-child(2n+1) {
+      margin-right: 15px; }
+  .interna .content .apelido {
+    padding-top: 110px !important;
+    min-height: calc( 435px - 110px) !important; }
+  .interna .content .apelido span {
+    width: 45%;
+    float: left;
+    margin-right: 17px;
+    font-size: 14px;
+    text-align: justify; }
+  .interna .content .apelido input[type=text] {
+    float: left;
+    height: 46px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px; }
+  .interna .content .apelido button {
+    float: left;
+    margin: 0; }
+  .interna .content .sua_pizza {
+    width: calc(365px - 60px);
+    height: calc(451px - 142px);
+    padding: 90px 40px 50px 20px;
+    float: left;
+    margin-top: -3px;
+    background: url(../imgs/sua_pizza.jpg) no-repeat; }
+  .interna .content .box_dados_user h2, .interna .content .box_dados_user h3, .interna .content .box_dados_user h4, .interna .content .box_dados_user h5, .interna .content .box_dados_user h6 {
+    text-align: left; }
+  .interna .content .box_sabor {
+    display: inline-block;
+    width: 100%; }
+    .interna .content .box_sabor .header {
+      width: calc(100% - 20px);
+      display: inline-block;
+      border: 2px solid #e1e1e1;
+      background-color: #ebebeb;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 15px; }
+      .interna .content .box_sabor .header span {
+        font-size: 16pt;
+        font-weight: 600;
+        color: #231f20; }
+      .interna .content .box_sabor .header .linha:nth-child(1) .btn, .interna .content .box_sabor .header .linha_unica .btn {
+        float: right;
+        font-size: 10pt;
+        padding: 5px 25px; }
+      .interna .content .box_sabor .header .linha:last-child {
+        text-align: center; }
+      .interna .content .box_sabor .header .linha {
+        width: 100%;
+        display: inline-block;
+        margin-bottom: 30px; }
+        .interna .content .box_sabor .header .linha h1, .interna .content .box_sabor .header .linha h2, .interna .content .box_sabor .header .linha h3 {
+          text-align: left; }
+        .interna .content .box_sabor .header .linha h3 {
+          padding: 0;
+          margin: 0 0 10px 0;
+          color: #656565;
+          font-weight: 600; }
+      .interna .content .box_sabor .header .preview_pizza {
+        float: left; }
+      .interna .content .box_sabor .header .info_pizza {
+        float: left;
+        margin-left: 30px;
+        width: 700px; }
+        .interna .content .box_sabor .header .info_pizza h1, .interna .content .box_sabor .header .info_pizza h2, .interna .content .box_sabor .header .info_pizza h3 {
+          text-align: left; }
+        .interna .content .box_sabor .header .info_pizza h2 {
+          padding: 0;
+          margin-bottom: 5px; }
+        .interna .content .box_sabor .header .info_pizza h3 {
+          padding: 0;
+          margin: 0 0 10px 0;
+          color: #656565;
+          font-weight: 600; }
+        .interna .content .box_sabor .header .info_pizza .ingrediente {
+          float: left;
+          margin-right: 30px; }
+          .interna .content .box_sabor .header .info_pizza .ingrediente span {
+            font-size: 10pt; }
+          .interna .content .box_sabor .header .info_pizza .ingrediente input[type=checkbox] {
+            float: left;
+            margin: 45px 15px 0 0; }
+          .interna .content .box_sabor .header .info_pizza .ingrediente .item {
+            float: left;
+            text-align: center; }
+      .interna .content .box_sabor .header .ingredientes .ingrediente {
+        float: left;
+        margin: 0 52px 52px 0; }
+        .interna .content .box_sabor .header .ingredientes .ingrediente span {
+          font-size: 10pt; }
+        .interna .content .box_sabor .header .ingredientes .ingrediente span.preco {
+          color: #9e1d20; }
+        .interna .content .box_sabor .header .ingredientes .ingrediente input[type=checkbox] {
+          float: left;
+          margin: 30px 5px 0 0; }
+        .interna .content .box_sabor .header .ingredientes .ingrediente .item {
+          float: left; }
+          .interna .content .box_sabor .header .ingredientes .ingrediente .item img {
+            float: left; }
+          .interna .content .box_sabor .header .ingredientes .ingrediente .item .infos {
+            float: left;
+            margin-left: 10px;
+            padding-top: 10px; }
+      .interna .content .box_sabor .header .ingredientes .ingrediente:nth-child(5n+5) {
+        margin-right: 0; }
+  .interna .content .pagamento .linha {
+    margin: 0 !important;
+    text-align: left !important; }
+    .interna .content .pagamento .linha .info_pizza img {
+      float: left; }
+    .interna .content .pagamento .linha .info_pizza p {
+      clear: both;
+      margin: 0; }
+    .interna .content .pagamento .linha .info_small {
+      font-size: 12px !important;
+      text-align: center;
+      width: 100%;
+      display: block; }
+  .interna .content .pagamento .linha h3:first-child {
+    margin: 0 0 10px 0 !important; }
+  .interna .content .pagamento .linha h3 {
+    clear: both;
+    width: 100%;
+    float: left;
+    margin-top: 30px !important; }
+  .interna .content .pagamento .box_item {
+    border-radius: 8px;
+    background-color: #231f20;
+    width: calc(100% - 40px);
+    padding: 20px;
+    margin-bottom: 30px;
+    color: #fff; }
+    .interna .content .pagamento .box_item span {
+      color: #fff;
+      font-size: 13px; }
+    .interna .content .pagamento .box_item .box {
+      display: inline-block;
+      vertical-align: top;
+      width: 33%; }
+      .interna .content .pagamento .box_item .box label {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px; }
+        .interna .content .pagamento .box_item .box label img {
+          float: none;
+          width: 40px; }
+    .interna .content .pagamento .box_item .opcoes label span {
+      width: 125px;
+      display: inline-block; }
+    .interna .content .pagamento .box_item .opcoes input[type=text] {
+      color: #333; }
+    .interna .content .pagamento .box_item .valor h4 {
+      color: #fff;
+      font-size: 35px;
+      text-align: left; }
+  .interna .content .pagamento .info_pizza {
+    width: 100% !important;
+    margin: 0 !important; }
+    .interna .content .pagamento .info_pizza h3 {
+      color: #fff !important; }
+  .interna .content .pagamento .header {
+    padding: 20px;
+    width: calc(100% - 40px);
+    background-color: #ffcc08;
+    border: none; }
+    .interna .content .pagamento .header .item span {
+      color: #fff; }
+  .interna .content .pagamento .box_footer_pgto {
+    width: 49%;
+    display: inline-block; }
+    .interna .content .pagamento .box_footer_pgto span {
+      font-size: 18px; }
+  .interna .content .pagamento .box_footer_pgto:last-child {
+    text-align: right; }
+  .interna .content .box.loja {
+    display: inline-block;
+    margin-right: 60px; }
+  .interna .content .box.loja:last-child {
+    margin-right: 0; }
+
+footer.rodape {
+  background-color: #231f20;
+  padding: 20px 0;
+  float: left;
+  width: 100%; }
+  footer.rodape .box {
+    float: left;
+    margin-right: 30px;
+    max-width: 286px;
+    text-transform: uppercase; }
+    footer.rodape .box h3 {
+      font-size: 15pt;
+      font-weight: 600;
+      color: #fff;
+      padding: 0;
+      margin: 0; }
+    footer.rodape .box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+      footer.rodape .box ul li {
+        width: 100%;
+        line-height: 30px; }
+        footer.rodape .box ul li a {
+          color: #aeadae;
+          font-size: 10pt; }
+    footer.rodape .box input[type=text], footer.rodape .box input[type=password] {
+      background-color: #ffcc08;
+      border-radius: 4px;
+      color: #231f20;
+      font-size: 10pt;
+      width: calc( 100% - 20px);
+      float: left;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none; }
+    footer.rodape .box .btn-success {
+      font-size: 10pt;
+      font-weight: 700;
+      float: left;
+      padding: 8px 15px;
+      margin-right: 20px; }
+  footer.rodape .box:last-child {
+    margin-right: 0; }
+  footer.rodape .likebox {
+    float: left;
+    margin-right: 30px; }
+  footer.rodape .links_login {
+    float: left;
+    width: 100%; }
+    footer.rodape .links_login a {
+      color: #ffcc08;
+      text-transform: none;
+      font-size: 12px;
+      margin: 0 24px 15px 0;
+      float: left; }
+
+.modal_pizza .preview_pizza {
+  display: inline-block;
+  width: 50%; }
+.modal_pizza .infos_pizza {
+  display: inline-block;
+  width: 48%; }
+  .modal_pizza .infos_pizza .seta {
+    background-image: url(../imgs/setas_preview_pizza.png);
+    width: 124px;
+    height: 20px;
+    margin-top: 20px; }
+  .modal_pizza .infos_pizza .seta.left {
+    background-position: 0 0; }
+  .modal_pizza .infos_pizza .seta.right {
+    background-position: -124px 0; }
+  .modal_pizza .infos_pizza a.seta {
+    color: #ffcc08;
+    padding: 20px 0;
+    font-size: 10pt;
+    text-align: center; }
+.modal_pizza h4 {
+  margin-bottom: 0; }
+.modal_pizza .item {
+  display: inline-block;
+  margin-right: 10px; }
+  .modal_pizza .item span {
+    font-size: 8pt; }
+  .modal_pizza .item .preco {
+    border-radius: 4px;
+    background-color: #ffcc08;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 5px; }
+    .modal_pizza .item .preco span:first-child {
+      font-size: 8pt; }
+    .modal_pizza .item .preco span:last-child {
+      font-size: 12pt;
+      font-weight: 700; }
+.modal_pizza .item:last-child {
+  margin: 0; }
+.modal_pizza .modal-content {
+  background-image: url(../imgs/bg_topo.jpg); }
+
+.modal_cep .modal-content {
+  background-color: #ffcc08; }
+.modal_cep input[type=text] {
+  border: 2px solid #231f20;
+  border-radius: 4px;
+  padding: 4px; }
+.modal_cep .btn {
+  padding: 5px 25px;
+  font-size: 12pt; }
+
+.modal-header {
+  border: none !important; }
+  .modal-header .close {
+    float: right;
+    border-radius: 100px;
+    border-color: #231f20;
+    background: none;
+    width: 30px; }
+    .modal-header .close span {
+      font-weight: 700; }
+
+.modal-footer {
+  border: none !important; }
+
+@media only screen and (max-width: 767px) {
+  .navbar-toggle {
+    display: block;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #000;
+    padding: 5px;
+    font-size: 12px;
+    text-indent: -9999px;
+    right: 20px;
+    top: 38px;
+    width: 35px;
+    position: absolute; }
+    .navbar-toggle .icon-bar {
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      display: inherit;
+      margin-bottom: 5px; }
+    .navbar-toggle .icon-bar:last-child {
+      margin: 0; }
+    .navbar-toggle .sr-only {
+      display: none; }
+
+  header.topo {
+    height: 105px; }
+    header.topo .logo img {
+      width: 150px; }
+    header.topo nav {
+      display: none;
+      position: absolute;
+      left: 0;
+      margin-top: 105px;
+      background: #fff;
+      box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.4); }
+      header.topo nav li {
+        width: 100%;
+        padding: 15px 0 0 0 !important;
+        height: auto !important; }
+      header.topo nav li:last-child {
+        padding-bottom: 15px !important; }
+
+  img {
+    width: 100%; }
+
+  .container, .interna .content .container {
+    width: calc(100% - 20px);
+    padding: 0 10px; }
+    .container .box_pizza, .interna .content .container .box_pizza {
+      width: calc(100% - 20px); }
+      .container .box_pizza label, .interna .content .container .box_pizza label {
+        width: 44%; }
+
+  .interna .content {
+    padding: 0; }
+    .interna .content .sua_pizza {
+      margin-top: 15px; }
+    .interna .content .cardapio .pizza {
+      width: 100%;
+      margin: 0 0 50px 0; }
+    .interna .content .box_sabor .header .info_pizza {
+      margin: 0;
+      width: 100%; }
+      .interna .content .box_sabor .header .info_pizza .ingrediente {
+        margin: 0 0 50px 0; }
+      .interna .content .box_sabor .header .info_pizza .btn-small.btn-secondary {
+        display: inline-block; }
+    .interna .content .infos_pedido {
+      width: 100%;
+      margin: 30px 0 0 0; }
+    .interna .content .fechar_pedido .box_pizza .btn {
+      width: calc(100% - 50px);
+      margin: 0 0 10px 0;
+      text-align: center;
+      display: inline-block; }
+    .interna .content .pagamento .box_item .box {
+      width: 100%; }
+    .interna .content .pagamento .box_footer_pgto {
+      width: 100%; }
+    .interna .content .pagamento .box_footer_pgto:last-child {
+      text-align: center; }
+      .interna .content .pagamento .box_footer_pgto:last-child .btn {
+        width: 100%;
+        margin-top: 30px; }
+    .interna .content .apelido span {
+      width: 100%; }
+    .interna .content .apelido input[type=text] {
+      width: 100%;
+      margin: 15px 0; }
+    .interna .content .apelido .btn-secondary {
+      width: 100% !important; }
+
+  .superbanner {
+    height: 132px;
+    padding: 65px 0 0 0; }
+    .superbanner h1 {
+      font-size: 18pt; }
+
+  .btn {
+    font-size: 10pt; }
+
+  .content .banners_home a {
+    width: 49%;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top; }
+    .content .banners_home a img {
+      width: 100%; }
+
+  footer.rodape .box {
+    width: 100%;
+    margin-bottom: 20px; }
+    footer.rodape .box h3 {
+      margin-top: 15px; }
+
+  .modal_pizza .preview_pizza, .modal_pizza .infos_pizza {
+    width: 100%; }
+  .modal_pizza .item {
+    width: 100%; }
+
+  .modal_cep input[type=text] {
+    width: 100%; }
+  .modal_cep .btn-success {
+    width: calc(100% - 50px);
+    margin: 15px 0 0 0;
+    text-align: center;
+    display: inline-block; } }
+@media only screen and (min-width: 768px) {
+  .navbar-toggle {
+    display: none; } }
+/* Medium devices */
+/* Smartphones (portrait and landscape) ----------- */
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 321px) {
+  /* Styles */ }
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
+  /* Styles */ }
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */ }
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* Styles */ }
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* Styles */ }
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  /* Styles */ }
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+  /* Styles */ }
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /* Styles */ }
+
+/*# sourceMappingURL=style.css.map */

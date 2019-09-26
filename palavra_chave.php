@@ -1,0 +1,38 @@
+<?
+/**
+ * Rotinas de busca e substituição de palavras chave.
+ *
+ * @version 1.2
+ * @package nucleo
+ * 
+ * LISTA DE MODIFICAÇÕES:
+ *
+ * VERSÃO    DATA         AUTOR         DESCRIÇÃO 
+ * ======    ==========   ===========   =============================================================
+ * 
+ * 1.2       09/06/2009   FELIPE        Renomeado as funções para o novo padrão de codificação. 
+ * 
+ * 1.1       05/05/2009   FELIPE        Adicionado comentários.
+ */
+
+require_once 'bd.php';
+
+/**
+ * Busca a palavra chave no "banco de palavras" e retorna a descrição da mesma.
+ *
+ * @todo Adicionar um mecanismo que substitua uma marcação passada para função por valores (%usuario% por exemplo).
+ * 
+ * @param string $chave Chave de busca
+ * @return Descrição / Texto. Caso não seja encontrado o próprio nome da chave será retornado.
+ */
+function buscar_palavra_chave($chave) {
+  require_once 'sys/lib/php/formulario.php';
+  
+  $objBusca = executar_busca_simples("SELECT texto FROM nuc_banco_palavras WHERE palavra = '".filtrar_caracteres_sql($chave)."' LIMIT 1");
+  
+  if($objBusca->texto)
+    return $objBusca->texto;
+  else
+    return $chave;
+}
+?>

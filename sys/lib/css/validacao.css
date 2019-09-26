@@ -1,0 +1,26 @@
+/* Estilo para um campo requerido deve ser exibido como erro */
+
+.requeridoEfeito {
+  border: 1px solid #ff3838 !important;
+  background-color: #fbefef;
+}
+
+.dicaObrigatorio {
+  /*
+  background: transparent url(../img/principal/fundo-obrigatorio.gif) no-repeat scroll top left;
+  position: absolute;
+  width: 118px;
+  height: 32px;
+  */
+  
+  position: absolute;
+  border: 2px solid #770000;
+  background-color: #be0000;
+  padding: 10px;
+  color: #fff;
+}
+
+.dicaObrigatorio ul {
+  margin-left: 25px;
+  margin-top: 10px;
+}

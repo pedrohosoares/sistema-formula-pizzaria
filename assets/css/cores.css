@@ -1,0 +1,79 @@
+﻿.fundoLaranja {
+    background-color: #FFE7C1;
+}
+
+.fundoLaranjaEscuro {
+    background-color: #D2842B;
+}
+
+.fundoLaranjaEscuro2 {
+    background-color: #D75920;
+}
+
+.fundoVerde {
+    background-color: #36ca78;
+}
+
+.fundoVermelhoFinalizado {
+    background-color: #E4322A;
+}
+
+.fundoCadastroBottom {
+    background-color: #FFC784;
+}
+
+.fundoBranco {
+    background-color: #fff;
+}
+
+.fundoAmarelo {
+    background-color: #FCFAB1;
+}
+
+.fundoAmareloClaro {
+    background-color: #FEF7C9;
+}
+
+.fundoRoxo {
+    background-color: #A500E6;
+}
+
+.fundoLaranjaBebidas {
+    background-color: #F3BC45;
+}
+
+.fundoLaranjaClaro {
+    background-color: #FFE2C3;
+}
+
+.fundoLaranjaBotao {
+    background-color: #FC8B23;
+}
+
+.fundoVermelhoEscuro {
+    background-color: #DC0927;
+}
+
+.corTextoMarrom {
+    color: #A0050D;
+}
+
+.corTextoMarromEscuro {
+    color: #7A480C;
+}
+
+.corTextoMarromClaro {
+    color: #900507;
+}
+
+.corPedido {
+    color: #FF0760;
+}
+
+.tamanhoMenor {
+    font-size: 0.8em;
+}
+
+.bordaD {
+    border-right: solid 1px #fff;
+}

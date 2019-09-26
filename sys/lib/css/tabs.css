@@ -1,0 +1,54 @@
+.menuTab {
+	margin: 30px 0pt 20px 0pt;
+}
+
+.menuTab ul {
+  background: transparent url(../img/principal/fundo-tab.gif) repeat-x scroll left bottom;
+  list-style: none;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.menuTab ul li {
+  display: inline;
+}
+
+.menuTab ul li a {
+  background: #1A4773 url(../img/principal/fundo-tab-menu.gif) repeat-x scroll left top;
+  color: #E57013 !important;
+  font-weight: bold !important;
+  text-decoration: none;
+  padding: 5px 15px;
+}
+
+.menuTab ul li a:hover {
+  background: #1A4773 url(../img/principal/fundo-tab-menu-hover.gif) repeat-x scroll left top;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menuTab ul li a:focus {
+  outline-style: none !important;	
+}
+
+.menuTab ul li.ativo a {
+  background: #F8F8F8 url(../img/principal/fundo-tab-menu-ativo.gif) repeat-x scroll left top !important;
+  color: #333 !important;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding: 10px 15px 5px 15px;
+}
+
+.painelTab {
+  display: none;
+  /*position: relative;*/
+  /*overflow: auto;*/	
+}
+
+.painelTab.ativo {
+  display: block;
+}

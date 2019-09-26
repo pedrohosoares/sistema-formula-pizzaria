@@ -1,0 +1,49 @@
+.menuTab {
+  margin: 0pt 0pt 20px 0pt;
+}
+
+.menuTab ul {
+  list-style: none;
+  padding-bottom: 5px;
+  text-align: right;
+}
+
+.menuTab ul li {
+  display: inline;
+}
+
+.menuTab ul li a {
+  color: #6D85AF;
+  font-weight: bold !important;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #6D85AF;
+}
+
+.menuTab ul li a:hover {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menuTab ul li a:focus {
+  outline-style: none !important;
+}
+
+.menuTab ul li.ativo a {
+  color: #1C4FAC !important;
+  border: 1px solid #1C4FAC;
+  font-weight: bold;
+  text-decoration: none;
+  /*cursor: default;*/
+}
+
+.painelTab {
+  display: none;
+  padding-bottom: 10px;
+  /*position: relative;*/ /*overflow: auto;*/
+}
+
+.painelTab.ativo {
+  display: block;
+  padding-bottom: 10px;
+}
