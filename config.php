@@ -32,18 +32,18 @@ define('FACEBOOK_APP_ID', 'APP_ID');
 define('FACEBOOK_SECRET', 'SECRET');
 
 
+/*
 define('BD_NOME', 'formula_pr');
 define('BD_USUARIO', 'formula_pr');
 define('BD_SENHA', 'kGVG2NmmjMAuKX/YOHH7c+r52bo=');
 define('BD_HOST', 'localhost');
+*/
 
 
-/*
 define('BD_NOME', 'formula_pr');
 define('BD_USUARIO', 'pedrosoares');
 define('BD_SENHA', '46302113');
 define('BD_HOST', '18.214.220.91');
-*/
 
 /*
 define('BD_NOME', 'formula_pizzaria_sistema');
