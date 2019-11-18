@@ -240,7 +240,7 @@ let url;
 let despachoIfood;
     document.querySelector('.ifood').innerText = "Aguarde...Confirmando Pedidos";
     let codPedidosIfood = "<?php echo implode(',',$ifood); ?>";
-    url = "https://formulasys.encontresuafranquia.com.br/ifood/dispatch.php?reference="+codPedidosIfood;
+    url = "<?php echo CAMINHO_DESPACHAR_IFOOD; ?>"+codPedidosIfood;
     despachoIfood = new XMLHttpRequest();
     despachoIfood.open('GET',url,true);
     despachoIfood.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
@@ -251,7 +251,7 @@ let despachoIfood;
 
     document.querySelector('.ifood').innerText = "Aguarde...Confirmando Pedidos";
     let codPedidosIfoodDelivery = "<?php echo implode(',',$ifoodBuscar); ?>";
-    url = "https://formulasys.encontresuafranquia.com.br/ifood/readyToDelivery.php?reference="+codPedidosIfoodDelivery;
+    url = "<?php echo CAMINHO_DESPACHO_DELIVERY_IFOOD; ?>"+codPedidosIfoodDelivery;
     despachoIfood = new XMLHttpRequest();
     despachoIfood.open('GET',url,true);
     despachoIfood.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');

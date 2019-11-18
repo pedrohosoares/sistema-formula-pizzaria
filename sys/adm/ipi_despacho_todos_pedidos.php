@@ -80,7 +80,7 @@ require_once '../../classe/pedido.php';
 				$cod_pizzarias = $arr_infos[1];
 				require_once("../../pub_req_fuso_horario1.php");
 
-				$SqlUpdate = "UPDATE $tabela SET situacao = 'ENVIADO' , cod_entregadores = '".$cod_entregadores[0]."' , cod_usuarios_envio = '".$codigo_usuario."' , data_hora_envio = NOW() WHERE $chave_primaria IN (".$cod_pedidos.") AND situacao = 'IMPRESSO'";
+				$SqlUpdate = "UPDATE $tabela SET situacao = 'ENVIADO' , cod_entregadores = '".$cod_entregadores[0]."' , cod_usuarios_envio = '".$codigo_usuario."' , data_hora_envio = '".DATA_HORA."' WHERE $chave_primaria IN (".$cod_pedidos.") AND situacao = 'IMPRESSO'";
 
 				$sqlPegaPedido = "SELECT ifood_polling FROM ipi_pedidos WHERE cod_pedidos='".$cod_pedidos."'";
 				$sqlQueryPegaPedido = mysql_query($sqlPegaPedido);
@@ -95,7 +95,7 @@ require_once '../../classe/pedido.php';
 				{	
 					if (IMPRIMIR_VIA_DESPACHO == "S")
 					{
-						$sql_inserir_relatorio = sprintf("INSERT into ipi_impressao_relatorio (cod_entregadores,cod_pedidos,cod_usuarios,cod_pizzarias,relatorio,data_hora_inicial,situacao) values( %d,%d,%d,%d,'%s',NOW(),'NOVO')",$cod_entregadores[0],$cod_pedidos,$codigo_usuario,$_SESSION['usuario']['cod_pizzarias'][0],"DESPACHO");
+						$sql_inserir_relatorio = sprintf("INSERT into ipi_impressao_relatorio (cod_entregadores,cod_pedidos,cod_usuarios,cod_pizzarias,relatorio,data_hora_inicial,situacao) values( %d,%d,%d,%d,'%s','".DATA_HORA."','NOVO')",$cod_entregadores[0],$cod_pedidos,$codigo_usuario,$_SESSION['usuario']['cod_pizzarias'][0],"DESPACHO");
 	          // die('passou');
 	          //echo "<br>".$sql_inserir_relatorio;
 	          //////////////////////////////echo "<br/>".$sql_inserir_relatorio;

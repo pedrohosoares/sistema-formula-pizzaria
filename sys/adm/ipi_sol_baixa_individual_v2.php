@@ -116,7 +116,7 @@ switch($acao)
         $SqlUpdate = "UPDATE $tabela SET situacao = 'BAIXADO' , cod_entregadores = $cod_entregador,";//
         //if ($forma_pg)
         //    $SqlUpdate .= " forma_pg = '$forma_pg', ";
-        $SqlUpdate .= " data_hora_baixa = NOW() WHERE $chave_primaria = $cod_pedidos";
+        $SqlUpdate .= " data_hora_baixa = '".DATA_HORA."' WHERE $chave_primaria = $cod_pedidos";
         $resUpdate = mysql_query($SqlUpdate);
         //echo "<br>1: ".$SqlUpdate;
 
@@ -158,7 +158,7 @@ switch($acao)
           if ( ($objBuscaPedido->origem_pedido == 'IFOOD') || ($objBuscaPedido->origem_pedido == 'NET') || (PONTOS_FIDELIDADE == "TODOS_PEDIDOS") )
           {
               //Distribuindo os pontos de fidelidade 1 -> 1
-            $SqlInsertPontos = "INSERT INTO ipi_fidelidade_clientes (cod_clientes, data_hora_fidelidade, pontos, data_validade, cod_pedidos) (SELECT cod_clientes, NOW(), FLOOR(valor_total), DATE_ADD(NOW(), INTERVAL 1 YEAR), cod_pedidos FROM $tabela WHERE $chave_primaria = $cod_pedidos)";
+            $SqlInsertPontos = "INSERT INTO ipi_fidelidade_clientes (cod_clientes, data_hora_fidelidade, pontos, data_validade, cod_pedidos) (SELECT cod_clientes, '".DATA_HORA."', FLOOR(valor_total), DATE_ADD('".DATA_HORA."', INTERVAL 1 YEAR), cod_pedidos FROM $tabela WHERE $chave_primaria = $cod_pedidos)";
             $resInsertPontos = mysql_query($SqlInsertPontos);
               //echo "<br>SqlInsertPontos: ".$SqlInsertPontos;
 
@@ -186,7 +186,7 @@ switch($acao)
 
                     if($obj_buscar_clientes->cod_clientes_indicador > 0) 
                     {
-                      $SqlInsertPontosIndica = "INSERT INTO ipi_fidelidade_clientes (cod_clientes, data_hora_fidelidade, pontos, data_validade, obs) VALUES ('".$obj_buscar_clientes->cod_clientes_indicador."', NOW(), '".(int)$obj_buscar_clientes->valor."', DATE_ADD(NOW(), INTERVAL 1 YEAR), 'Indicação pelo pedido $cod_pedidos')";
+                      $SqlInsertPontosIndica = "INSERT INTO ipi_fidelidade_clientes (cod_clientes, data_hora_fidelidade, pontos, data_validade, obs) VALUES ('".$obj_buscar_clientes->cod_clientes_indicador."', '".DATA_HORA."', '".(int)$obj_buscar_clientes->valor."', DATE_ADD('".DATA_HORA."', INTERVAL 1 YEAR), 'Indicação pelo pedido $cod_pedidos')";
                       $resInsertPontosIndica = mysql_query($SqlInsertPontosIndica);
                     //echo "<br>SqlInsertPontosIndica: ".$SqlInsertPontosIndica;
 
@@ -358,7 +358,7 @@ switch($acao)
               // Insere os créditos
                 if ($cod_titulos_recebimento == '')
                 {
-                  $sql_inserir_titulos = sprintf("INSERT INTO ipi_titulos (cod_pedidos, cod_clientes, cod_pizzarias, cod_titulos_subcategorias, descricao, tipo_cedente_sacado, tipo_titulo, total_parcelas, data_hora_criacao) VALUES ('%s', '%s', '%s', '%s', '%s', 'CLIENTE', 'RECEBER', %d, NOW())",
+                  $sql_inserir_titulos = sprintf("INSERT INTO ipi_titulos (cod_pedidos, cod_clientes, cod_pizzarias, cod_titulos_subcategorias, descricao, tipo_cedente_sacado, tipo_titulo, total_parcelas, data_hora_criacao) VALUES ('%s', '%s', '%s', '%s', '%s', 'CLIENTE', 'RECEBER', %d, '".DATA_HORA."')",
                     $cod_pedidos, $objBuscaPedido->cod_clientes, $objBuscaPedido->cod_pizzarias, $cod_titulos_subcategorias, 'Recebimento ref. pedido ' . $cod_pedidos . ' em ' . date('d/m/Y'), $num_pedidos_formas_pg);
                   $res_inserir_titulos = mysql_query($sql_inserir_titulos);
                 //echo "<Br>sql_inserir_titulos:      ".$sql_inserir_titulos;
@@ -373,13 +373,13 @@ switch($acao)
 
                 if($dias_soma>0)
                 {
-                  $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s', '%s','%s', DATE_ADD('%s', INTERVAL '%s' DAY), DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'), '%s', '%s', '%s', ".$t.", '%s', 1, 'ABERTO',NOW(),'%s')",
+                  $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s', '%s','%s', DATE_ADD('%s', INTERVAL '%s' DAY), DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'), '%s', '%s', '%s', ".$t.", '%s', 1, 'ABERTO','".DATA_HORA."','%s')",
                     $cod_titulos,$cod_formas_pg, $cod_bancos_destino, $objBuscaPedido->data_hora_pedido,$dias_soma,$objBuscaPedido->data_hora_pedido,$dias_soma,$objBuscaPedido->data_hora_pedido,$objBuscaPedido->data_hora_pedido, $obj_pedidos_formas_pg->valor, 0, $obj_pedidos_formas_pg->valor, $forma_pg, $objBuscaPedido->data_hora_pedido);
                   $res_inserir_parcelas = mysql_query($sql_inserir_parcelas);
                 }
                 else
                 {
-                  $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s','%s','%s', DATE_ADD('%s', INTERVAL '%s' DAY), DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'), '%s', '%s', '%s', ".$t.", '%s', 1, 'PAGO',NOW(),'%s')",
+                  $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s','%s','%s', DATE_ADD('%s', INTERVAL '%s' DAY), DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'), '%s', '%s', '%s', ".$t.", '%s', 1, 'PAGO','".DATA_HORA."','%s')",
                     $cod_titulos,$cod_formas_pg, $cod_bancos_destino,$objBuscaPedido->data_hora_pedido, $dias_soma,$objBuscaPedido->data_hora_pedido,$dias_soma,$objBuscaPedido->data_hora_pedido,$objBuscaPedido->data_hora_pedido, $obj_pedidos_formas_pg->valor, 0, $obj_pedidos_formas_pg->valor, $forma_pg, $objBuscaPedido->data_hora_pedido);
                   $res_inserir_parcelas = mysql_query($sql_inserir_parcelas);
                 }
@@ -391,21 +391,21 @@ switch($acao)
                 {
                   $valor_taxa = ($obj_buscar_forma_pg->taxa * $obj_pedidos_formas_pg->valor * -1) / 100;
 
-                  $sql_inserir_titulos = sprintf("INSERT INTO ipi_titulos (cod_pedidos, cod_clientes, cod_pizzarias, cod_titulos_subcategorias, descricao, tipo_cedente_sacado, tipo_titulo, total_parcelas, data_hora_criacao) VALUES ('%s', '%s', '%s', '%s', '%s', 'CLIENTE', 'PAGAR', 1, NOW())",
+                  $sql_inserir_titulos = sprintf("INSERT INTO ipi_titulos (cod_pedidos, cod_clientes, cod_pizzarias, cod_titulos_subcategorias, descricao, tipo_cedente_sacado, tipo_titulo, total_parcelas, data_hora_criacao) VALUES ('%s', '%s', '%s', '%s', '%s', 'CLIENTE', 'PAGAR', 1, '".DATA_HORA."')",
                     $cod_pedidos, $objBuscaPedido->cod_clientes, $objBuscaPedido->cod_pizzarias, $cod_titulos_subcategorias_taxa, 'Pagamento taxa ref. pedido ' . $cod_pedidos . ' em ' . date('d/m/Y'));
                   $res_inserir_titulos = mysql_query($sql_inserir_titulos);
                   $cod_titulos = mysql_insert_id();
                 //echo "<Br>sql_inserir_titulos:      ".$sql_inserir_titulos;
                   if($dias_soma>0)
                   {
-                    $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s','%s', '%s', DATE_ADD('%s', INTERVAL '%s' DAY), DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'),'%s', '%s', '%s', 1, '%s', 1, 'ABERTO',NOW(), '%s')",
+                    $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s','%s', '%s', DATE_ADD('%s', INTERVAL '%s' DAY), DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'),'%s', '%s', '%s', 1, '%s', 1, 'ABERTO','".DATA_HORA."', '%s')",
                       $cod_titulos,$cod_formas_pg, $cod_bancos_destino, $objBuscaPedido->data_hora_pedido, $dias_soma, $objBuscaPedido->data_hora_pedido,$dias_soma,$objBuscaPedido->data_hora_pedido,$objBuscaPedido->data_hora_pedido, $valor_taxa, 0, $valor_taxa, $forma_pg, $objBuscaPedido->data_hora_pedido);
                     $res_inserir_parcelas = mysql_query($sql_inserir_parcelas);
                 //echo "<Br>sql_inserir_parcelas:      ".$sql_inserir_parcelas;
                   }
                   else
                   {
-                    $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s', '%s', '%s', NOW(), DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'),'%s', '%s', '%s', 1, '%s', 1, 'PAGO', NOW(), '%s')",
+                    $sql_inserir_parcelas = sprintf("INSERT INTO ipi_titulos_parcelas (cod_titulos,cod_formas_pg, cod_bancos_destino, data_vencimento, data_pagamento, mes_ref, ano_ref, valor, juros, valor_total, numero_parcela, forma_pagamento, recebido_enviado, situacao, data_hora_criacao, data_emissao) VALUES ('%s', '%s', '%s', '".DATA_HORA."', DATE_ADD('%s', INTERVAL '%s' DAY), MONTH('%s'), YEAR('%s'),'%s', '%s', '%s', 1, '%s', 1, 'PAGO', '".DATA_HORA."', '%s')",
                       $cod_titulos,$cod_formas_pg, $cod_bancos_destino, $objBuscaPedido->data_hora_pedido, $dias_soma, $objBuscaPedido->data_hora_pedido,$objBuscaPedido->data_hora_pedido, $valor_taxa, 0, $valor_taxa, $forma_pg, $objBuscaPedido->data_hora_pedido);
                     $res_inserir_parcelas = mysql_query($sql_inserir_parcelas);
                   }

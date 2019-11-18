@@ -45,7 +45,7 @@ function passar_codigo_sistemas(codigo)
             
             <table align="center" style="margin: 0px auto;" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
-                    <td valign="top" width="33%" align="center"><a href="ipi_rel_historico_pedidos.php" target="_blank"><img src="../lib/img/principal/botao_historico.jpg"></a></td>
+                    <td valign="top" width="33%" align="center"><a href="<?php echo URL_PEDIDOS; ?>" target="_blank"><img src="../lib/img/principal/botao_historico.jpg"></a></td>
                     <td valign="top" width="33%" align="center"><a href="ipi_caixa.php?executa=refresh" target="_blank"><img src="../lib/img/principal/botao_frente_caixa.jpg"></a></td>
                     <td valign="top" width="33%" align="center"><a href="ipi_despacho_pedidos.php" target="_blank"><img src="../lib/img/principal/botao_expedicao.jpg"></a></td>
                 </tr>
@@ -90,7 +90,7 @@ function passar_codigo_sistemas(codigo)
                             <div class="blocoMenuGrupo" style="background-image: url(../lib/img/principal/acesso_rapido_operacoes.png); margin: 0px;">
                                 <h2>Operações</h2>
                                 <ul>
-                                    <li><a href="<? if ( in_array("ipi_caixa_fechamento_v1_1.php", $_SESSION['usuario']['paginas'])){echo 'ipi_caixa_fechamento_v1_1.php'; }else{ echo 'ipi_caixa_fechamento.php';}?>">Fechamento de Caixa</a></li>
+                                    <li><a href="<? if ( in_array("ipi_fechamento_caixa_novo.php", $_SESSION['usuario']['paginas'])){echo 'ipi_fechamento_caixa_novo.php'; }else{ echo 'ipi_fechamento_caixa_novo.php';}?>">Fechamento de Caixa</a></li>
                                     <li><a href="<? if ( in_array("ipi_sol_baixa_individual_v2.php", $_SESSION['usuario']['paginas'])){echo 'ipi_sol_baixa_individual_v2.php'; }else{ echo 'ipi_sol_baixa_individual.php';}?>">Baixa de Pedidos</a></li>
                                     <li><a href="ipi_sol_entregas_avulsas.php">Entrega Avulsa</a></li>
                                     <li><a href="ipi_sol_impressao_relatorio.php">Impressão de Relatórios</a></li>
@@ -106,7 +106,7 @@ function passar_codigo_sistemas(codigo)
                                 <h2>Relatórios</h2>
                                 <ul>
                                     <li><a href="ipi_rel_forma_pagamentos.php">Formas de Pagamento</a></li>
-                                    <li><a href="ipi_rel_historico_pedidos.php">Histórico de Pedidos</a></li>
+                                    <li><a href="<?php echo URL_PEDIDOS; ?>">Histórico de Pedidos</a></li>
                                     <li><a href="ipi_rel_quant_vendidas.php">Quantidade Vendidas</a></li>
                                     <li><a href="ipi_rel_ger_volume_vendas.php">Volume de Vendas</a></li>
                                     <li><a href="ipi_rel_entregadores.php">Pedidos - Entregas</a></li>

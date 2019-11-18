@@ -93,7 +93,7 @@ switch($acao) {
 			if(!empty($sqlQueryPegaPedido->ifood_polling)){
 				$codPedidosIfood[] = $sqlQueryPegaPedido->ifood_polling;
 			}
-			$SqlUpdate = "UPDATE $tabela SET situacao = 'ENVIADO' , cod_entregadores = '".$cod_entregadores[0]."' , cod_usuarios_envio = '".$codigo_usuario."' , data_hora_envio = NOW() WHERE $chave_primaria IN (".$cod_pedidos.") AND situacao = 'IMPRESSO'";
+			$SqlUpdate = "UPDATE $tabela SET situacao = 'ENVIADO' , cod_entregadores = '".$cod_entregadores[0]."' , cod_usuarios_envio = '".$codigo_usuario."' , data_hora_envio = '".DATA_HORA."' WHERE $chave_primaria IN (".$cod_pedidos.") AND situacao = 'IMPRESSO'";
 				//echo $SqlUpdate;
 			/*
     		//SCRIPT PARA NOTA FISCAL ELETRONICA
@@ -113,7 +113,7 @@ switch($acao) {
 			{
 				if (IMPRIMIR_VIA_DESPACHO == "S")
 				{
-					$sql_inserir_relatorio = sprintf("INSERT into ipi_impressao_relatorio (cod_entregadores,cod_pedidos,cod_usuarios,cod_pizzarias,relatorio,data_hora_inicial,situacao) values( %d,%d,%d,%d,'%s',NOW(),'NOVO')",$cod_entregadores[0],$cod_pedidos,$codigo_usuario,$_SESSION['usuario']['cod_pizzarias'][0],"DESPACHO");
+					$sql_inserir_relatorio = sprintf("INSERT into ipi_impressao_relatorio (cod_entregadores,cod_pedidos,cod_usuarios,cod_pizzarias,relatorio,data_hora_inicial,situacao) values( %d,%d,%d,%d,'%s','".DATA_HORA."','NOVO')",$cod_entregadores[0],$cod_pedidos,$codigo_usuario,$_SESSION['usuario']['cod_pizzarias'][0],"DESPACHO");
 					$res_inserir_relatorio = mysql_query($sql_inserir_relatorio);
 				}
 			}

@@ -167,11 +167,12 @@ switch($acao) {
   ?>
   <script type="text/javascript">
     let ids = "<?php echo $indicesSql; ?>";
+    let urlCancelaNotaFiscalAjax = "<?php echo CANCELAR_NOTA_AJAX_1; ?>";
     let ajaxData = JSON.stringify({
       ids:ids
     });
     xhr = new XMLHttpRequest();
-    xhr.open('POST','https://formulasys.encontresuafranquia.com.br/index.php?acao=cancelar_notas_fiscais&ref='+ids+'&chave=165117047d56ce2487aa718bd8d6c5b7',true);
+    xhr.open('POST',urlCancelaNotaFiscalAjax+ids+'&chave=165117047d56ce2487aa718bd8d6c5b7',true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     xhr.send(ajaxData);
     console.log(ajaxData);
@@ -812,15 +813,15 @@ if($acao!="")
 
             echo '<td align="center" '.$cor.'><input type="checkbox" class="marcar situacao" name="'.$chave_primaria.'[]" value="'.$objBuscaRegistros->$chave_primaria.'"></td>';
             if(!empty($objBuscaRegistros->ifood_polling)){
-              echo "<td align='center'><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='https://formulasys.encontresuafranquia.com.br/pedido_impresso_ifood.php?cod_pedidos=".$objBuscaRegistros->cod_pedidos."'>CUPOM PEDIDO</a><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='https://formulasys.encontresuafranquia.com.br/pedido_cozinha_ifood.php?cod_pedidos=".$objBuscaRegistros->cod_pedidos."'>CUPOM COZINHA</a>"."</td>";
+              echo "<td align='center'><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='".CAMINHO_PEDIDO_IMPRESSO_IFOOD.$objBuscaRegistros->cod_pedidos."'>CUPOM PEDIDO</a><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='".CAMINHO_PEDIDO_COZINHA_IFOOD.$objBuscaRegistros->cod_pedidos."'>CUPOM COZINHA</a>"."</td>";
             }else{
-              echo "<td align='center'><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='https://formulasys.encontresuafranquia.com.br/pedido_impresso.php?cod_pedidos=".$objBuscaRegistros->cod_pedidos."'>CUPOM PEDIDO</a><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='https://formulasys.encontresuafranquia.com.br/pedido_cozinha.php?cod_pedidos=".$objBuscaRegistros->cod_pedidos."'>CUPOM COZINHA</a>"."</td>";
+              echo "<td align='center'><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='".CAMINHO_PEDIDO_IMPRESSO_TEL.$objBuscaRegistros->cod_pedidos."'>CUPOM PEDIDO</a><a style='display: block; background: yellow; border: 1px solid #000; padding: 2px;' target='_blank' href='".CAMINHO_PEDIDO_COZINHA_TEL.$objBuscaRegistros->cod_pedidos."'>CUPOM COZINHA</a>"."</td>";
             }
             echo '<td align="center" '.$cor.'><a href="ipi_rel_historico_pedidos.php?p='.$objBuscaRegistros->$chave_primaria.'">'.sprintf('%08d', $objBuscaRegistros->$chave_primaria).'</a></td>';
             $arquivoJson = $objBuscaRegistros->arquivo_json;
             $arquivoJson = !empty($arquivoJson)?json_decode($arquivoJson,true):NULL;
             if(empty($objBuscaRegistros->cancelamento_json) and !empty($arquivoJson) and isset($arquivoJson['caminho_danfe']) and isset($arquivoJson['qrcode_url'])){
-              echo '<td align="center" '.$cor.'><a target="_blank" href="https://api.focusnfe.com.br'.$arquivoJson['caminho_danfe'].'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">CUPOM FISCAL</a>';
+              echo '<td align="center" '.$cor.'><a target="_blank" href="'.API_FOCUS_NFE.$arquivoJson['caminho_danfe'].'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">CUPOM FISCAL</a>';
               echo'<a target="_blank" href="'.$arquivoJson['qrcode_url'].'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">NOTA FISCAL</a>';
               $cnpj = $objBuscaRegistros->cnpj;
               $cnpj = str_replace('-', '', $cnpj);
@@ -829,7 +830,7 @@ if($acao!="")
               $data = $objBuscaRegistros->data_hora_pedido;
               $data = explode(' ', $data);
               $data = explode('-', $data[0]);
-              $pasta = 'http://formulasys.encontresuafranquia.com.br/notas/'.$cnpj.'/'.$data[0].'/'.$data[1].'/'.$data[2].'/'.$objBuscaRegistros->cod_pedidos.'.pdf';
+              $pasta = CAMINHO_ARQUIVOS_NOTAS.$cnpj.'/'.$data[0].'/'.$data[1].'/'.$data[2].'/'.$objBuscaRegistros->cod_pedidos.'.pdf';
               echo '<a target="_blank" href="'.$pasta.'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">CUPOM PDF</a></td>';
               ?>
               <td align="center" <?php echo $cor; ?>>
@@ -839,7 +840,7 @@ if($acao!="")
               </td>
               <?php
             }else if(empty($objBuscaRegistros->cancelamento_json) and isset($arquivoJson['caminho_xml_cancelamento'])){
-              echo '<td align="center" '.$cor.'><a target="_blank" href="https://api.focusnfe.com.br'.$arquivoJson['caminho_xml_cancelamento'].'">NOTA CANCELADA</a></td>';
+              echo '<td align="center" '.$cor.'><a target="_blank" href="'.API_FOCUS_NFE.$arquivoJson['caminho_xml_cancelamento'].'">NOTA CANCELADA</a></td>';
               echo '<td align="center" '.$cor.'>NOTA CANCELADA</td>';
             }else{
               $ref = "";
@@ -853,7 +854,7 @@ if($acao!="")
                   echo '<td align="center" '.$cor.'>NOTA CANCELADA</td>';
                   echo '<td align="center" '.$cor.'>NOTA CANCELADA</td>';
                 }else{
-                  echo '<td align="center" '.$cor.'><a target="_blank" href="https://api.focusnfe.com.br'.$arquivoJson['caminho_danfe'].'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">CUPOM FISCAL</a>';
+                  echo '<td align="center" '.$cor.'><a target="_blank" href="'.API_FOCUS_NFE.$arquivoJson['caminho_danfe'].'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">CUPOM FISCAL</a>';
                   echo'<a target="_blank" href="'.$arquivoJson['qrcode_url'].'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">NOTA FISCAL</a>';
                   $cnpj = $objBuscaRegistros->cnpj;
                   $cnpj = str_replace('-', '', $cnpj);
@@ -862,7 +863,7 @@ if($acao!="")
                   $data = $objBuscaRegistros->data_hora_pedido;
                   $data = explode(' ', $data);
                   $data = explode('-', $data[0]);
-                  $pasta = 'http://formulasys.encontresuafranquia.com.br/notas/'.$cnpj.'/'.$data[0].'/'.$data[1].'/'.$data[2].'/'.$objBuscaRegistros->cod_pedidos.'.pdf';
+                  $pasta = CAMINHO_ARQUIVOS_NOTAS.$cnpj.'/'.$data[0].'/'.$data[1].'/'.$data[2].'/'.$objBuscaRegistros->cod_pedidos.'.pdf';
                   echo '<a target="_blank" href="'.$pasta.'" style="display:block;border: 1px solid #333;margin: 3px;background: yellow;padding: 2px;">CUPOM PDF</a></td>';
                   if(isset($cancelamento['justificativa']) and !empty($cancelamento['justificativa'])){
                     ?>
@@ -882,9 +883,9 @@ if($acao!="")
                 }
               }else if(!empty($objBuscaRegistros->ref_nota_fiscal)){
                 if($objBuscaRegistros->origem_pedido == 'IFOOD'){
-                  $ref .= "<br /><div><a href='https://formulasys.encontresuafranquia.com.br/focusnfe/regerarNotaFiscalIfood.php?acao=gerar&chave=165117047d56ce2487aa718bd8d6c5b7&cod_pedidos=".$objBuscaRegistros->cod_pedidos."&ref=".$objBuscaRegistros->ref_nota_fiscal."' class='reemitenota'>Re-emitir</a><div ref='".$objBuscaRegistros->ref_nota_fiscal."' style='display:none;' class='preloader'></div></div>";
+                  $ref .= "<br /><div><a href='".REGENERAR_NOTA_IFOOD.$objBuscaRegistros->cod_pedidos."&ref=".$objBuscaRegistros->ref_nota_fiscal."' class='reemitenota'>Re-emitir</a><div ref='".$objBuscaRegistros->ref_nota_fiscal."' style='display:none;' class='preloader'></div></div>";
                 }else{
-                  $ref .= "<br /><div><a href='https://formulasys.encontresuafranquia.com.br/focusnfe/regerarNotaFiscal.php?acao=gerar&chave=165117047d56ce2487aa718bd8d6c5b7&cod_pedidos=".$objBuscaRegistros->cod_pedidos."&ref=".$objBuscaRegistros->ref_nota_fiscal."' class='reemitenota'>Re-emitir</a><div ref='".$objBuscaRegistros->ref_nota_fiscal."' style='display:none;' class='preloader'></div></div>";
+                  $ref .= "<br /><div><a href='".REGENERAR_NOTA.$objBuscaRegistros->cod_pedidos."&ref=".$objBuscaRegistros->ref_nota_fiscal."' class='reemitenota'>Re-emitir</a><div ref='".$objBuscaRegistros->ref_nota_fiscal."' style='display:none;' class='preloader'></div></div>";
                 }
                 echo '<td align="center" '.$cor.'><span class="remissaoTexto">Nota não emitida</span> '.$ref.'</td>';
                 ?>
@@ -952,7 +953,7 @@ if($acao!="")
               if($objBuscaRegistros->ifood_status == 'CANCELADO'){
                 $ifoodCancelado = " NO IFOOD";
               }
-              echo '<td align="center" '.$cor.'><div class="toolip" style="display:none;">'.$mensagem.'</div><a class="canceladoTooltip" href="https://formulasys.encontresuafranquia.com.br/pedido_cancelado.php?cod_pedidos='.$objBuscaRegistros->cod_pedidos.'" style="display: block; background: yellow; border: 1px solid #000; padding: 2px;" target="_blank">'.$objBuscaRegistros->pedidos_situacao.$ifoodCancelado.'</a></td>';
+              echo '<td align="center" '.$cor.'><div class="toolip" style="display:none;">'.$mensagem.'</div><a class="canceladoTooltip" href="'.CAMINHO_PEDIDO_CANCELADO.$objBuscaRegistros->cod_pedidos.'" style="display: block; background: yellow; border: 1px solid #000; padding: 2px;" target="_blank">'.$objBuscaRegistros->pedidos_situacao.$ifoodCancelado.'</a></td>';
             }else{
               echo '<td align="center" '.$cor.'>'.$objBuscaRegistros->pedidos_situacao.'</td>';
             }
